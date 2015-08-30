@@ -240,7 +240,7 @@ body {
     bottom: 0;
     position: absolute;
     left: 0;
-    right: -1px;
+    right: -3px;
     top: 0;
     z-index: 2;
 }

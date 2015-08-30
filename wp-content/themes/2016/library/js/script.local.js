@@ -35,22 +35,34 @@
                     if (img.is(':visible') || $('.menu-toggle').first().is(':visible')) {
                         return false;
                     }
+                    // Cacher toutes les images
+                    container.find('img').hide();
                     // Suppression des attributs de taille de l'image
                     img.attr('width', '');
                     img.attr('height', '');
                     // Redimentionner l'image et le conteneur a la meme taille que le corps
                     var containerSize = body.width();
-                    img.css({width: containerSize + 'px'});
                     container.css({
                         width: containerSize + 'px',
-                        marginLeft: (parseInt(body.offset().left) - parseInt($('#content-container').offset().left)) + 'px'
+                        maxWidth: containerSize + 'px',
+                        marginLeft: (parseInt(body.offset().left) - parseInt($('#content-container').offset().left)) + 'px',
+                        textAlign: 'center'
                     });
-                    
+                    // Si l'image est trop grande verticalement, rendimentionner
+                    var imgSize = getSize(img);
+                    var visibility = jQuery(window).height() - imgSize.offset.top + $(document).scrollTop() - 20;
+                    if (getSize(img).height > visibility) {
+                        img.css({
+                            height: visibility + 'px',
+                            width: ''
+                        });
+                    }
                     // Afficher les bons elements
                     overlay.show();
-                    img.fadeIn();
                     container.show();
-                    
+                    img.fadeIn(function() {
+                        
+                    });
                 });
                 // Lorsque la souris sors du lien
                 linkContainer.mouseleave(function(event) {
@@ -70,5 +82,36 @@
         
         
     });
+    
+    function getSize(element) {
+        var container = element.closest('div');
+        
+        var contDisplay = container.css('display');
+        var elPosition = element.css('position');
+        var elVisibility = element.css('visibility');
+        var elDispay = element.css('display');
+        
+        container.css('display', 'block');
+        element.css({
+            position:   'static',
+            visibility: 'visible'
+        });
+
+        var optionHeight = element.outerHeight();
+        var optionWidth = element.width();
+        var optionOffset = container.offset();
+
+        container.css('display', contDisplay);
+        element.css({
+            position:   elPosition,
+            visibility: elVisibility,
+            display:    elDispay
+        });
+        return {
+            height: optionHeight,
+            width: optionWidth,
+            offset: optionOffset
+        };
+    }
     
 })(jQuery);
