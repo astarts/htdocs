@@ -130,6 +130,19 @@ pre,code,blockquote,.wp-caption-text,.highlight-box {
     -webkit-transform: translateZ(0);
 }
 
+.menu-item a.menu-image-title-above, 
+.menu-item a.menu-image-title-below {
+     text-align: right !important;
+}
+#site-nav .menu-image-container {
+    position: absolute;
+    margin-left: 257px;
+}
+
+#site-nav .menu-image-container img {
+    max-width: 74%;
+}
+
 #post h3,.comment-content h3,.post-header h1,#sidebar,.archive-header h2,.attachment-header h2,.archive-post-title,#comments,.comment-reply-title {
 
 }
@@ -221,6 +234,15 @@ body {
     width: 100%;
     padding: 54px 5%;
     line-height: 1.7;
+}
+#content .overlay {
+    background-color: #ffffff;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: -1px;
+    top: 0;
+    z-index: 2;
 }
 
 #title,h1,h2,h3,h4,h5,h6 {
