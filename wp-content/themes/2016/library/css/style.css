@@ -783,6 +783,7 @@ h6 {
 }
 
 .archive-thumbnail {
+    border: 1px solid #000000;
     position: relative;
     width: 100%;
 }
@@ -1382,7 +1383,7 @@ img.size-full {
 
     .archive-thumbnail {
         width: 100%;
-        padding-top: 150%;
+        padding-top: 140%;
     }
 
     #archive .post,#archive .page {
