@@ -186,6 +186,7 @@ article ol ul,.comment-content ol ul,.widget ol ul,article ol ol,.comment-conten
 
 img,iframe,.wp-caption,#searchform input,.post-password-form input[type=password],#respond input[type=text],#respond input[type=email],#respond input[type=url],#respond textarea {
     max-width: 100% !important;
+    height: auto;
 }
 
 /*.post-thumbnail,.archive-thumbnail {
