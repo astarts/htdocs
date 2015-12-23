@@ -226,7 +226,7 @@ body {
 }
 
 #sidebar {
-    position: absolute;
+    position: relative;
     width: 100%;
     z-index: 100;
 }
@@ -1484,7 +1484,6 @@ img.size-full {
     }
 
     #sidebar {
-        position: absolute;
         width: 21%;
         background: transparent;
     }

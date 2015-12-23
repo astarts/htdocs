@@ -22,10 +22,10 @@
 define('DB_NAME', 'galerie2016_');
 
 /** Utilisateur de la base de données MySQL. */
-define('DB_USER', 'galerie2016');
+define('DB_USER', 'root');
 
 /** Mot de passe de la base de données MySQL. */
-define('DB_PASSWORD', '22sesame22');
+define('DB_PASSWORD', '');
 
 /** Adresse de l'hébergement MySQL. */
 define('DB_HOST', 'localhost');

@@ -18,10 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {	exit; }
 @define( 'GDE_PLUGIN_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
 // help links
-@define( 'GDE_STDOPT_URL', 'http://www.davistribe.org/gde/settings/viewer-options/' );
-@define( 'GDE_ENHOPT_URL', 'http://www.davistribe.org/gde/settings/enhanced-options/' );
-@define( 'GDE_PROOPT_URL', 'http://www.davistribe.org/gde/settings/viewer-profiles/' );
-@define( 'GDE_ADVOPT_URL', 'http://www.davistribe.org/gde/settings/advanced-options/' );
+@define( 'GDE_STDOPT_URL', 'https://wordpress.org/plugins/google-document-embedder/' );
+@define( 'GDE_ENHOPT_URL', 'https://wordpress.org/plugins/google-document-embedder/' );
+@define( 'GDE_PROOPT_URL', 'https://wordpress.org/plugins/google-document-embedder/' );
+@define( 'GDE_ADVOPT_URL', 'https://wordpress.org/plugins/google-document-embedder/' );
 @define( 'GDE_FORUM_URL', 'http://wordpress.org/support/plugin/google-document-embedder' );
 @define( 'GDE_WP_URL', 'http://wordpress.org/extend/plugins/google-document-embedder/' );
 
@@ -100,11 +100,11 @@ function gde_get_profiles( $ident = '', $include_id = true, $include_desc = fals
 function gde_validate_file( $file = NULL, $force ) {
 	
 	// error messages
-	$nofile = __('File not specified, check shortcode syntax', 'gde');
-	$badlink = __('Requested URL is invalid', 'gde');
-	$badtype = __('Unsupported File Type', 'gde') . " (%e)";
-	$unktype = __('Unable to determine file type from URL', 'gde');
-	$notfound = __('Error retrieving file - if necessary turn off error checking', 'gde') . " (%e)";
+	$nofile = __('File not specified, check shortcode syntax', 'google-document-embedder');
+	$badlink = __('Requested URL is invalid', 'google-document-embedder');
+	$badtype = __('Unsupported File Type', 'google-document-embedder') . " (%e)";
+	$unktype = __('Unable to determine file type from URL', 'google-document-embedder');
+	$notfound = __('Error retrieving file - if necessary turn off error checking', 'google-document-embedder') . " (%e)";
 	
 	if ( ! $file ) {
 		return $nofile;
@@ -228,9 +228,9 @@ function gde_split_filename( $filename ) {
 
 function gde_format_bytes( $bytes, $precision = 2 ) {
 	if ( ! is_numeric( $bytes ) || $bytes < 1 ) {
-		return __('Unknown', 'gde');
+		return __('Unknown', 'google-document-embedder');
 	} else {
-		$units = array( 'B', 'KB', __('MB', 'gde'), 'GB', 'TB' );
+		$units = array( 'B', 'KB', __('MB', 'google-document-embedder'), 'GB', 'TB' );
 		
 		$bytes = max( $bytes, 0 );
 		$pow = floor( ( $bytes ? log( $bytes ) : 0 ) / log( 1024 ) );
@@ -366,7 +366,7 @@ function gde_ga_event( $file ) {
 		$label = "this.href";
 	} else {
 		$category = "'" . addslashes( $gdeoptions['ga_category'] ) . "'";
-		$action = "'" . __('Download', 'gde') . "'";
+		$action = "'" . __('Download', 'google-document-embedder') . "'";
 		if ( $gdeoptions['ga_label'] == "url" ) {
 			$label = "this.href";
 		} else {
@@ -505,7 +505,7 @@ function gde_save_error() {
 function gde_show_error( $status ) {
 	global $gdeoptions;
 	
-	$error = "GDE " . __('Error', 'gde') . ": " . $status;
+	$error = "GDE " . __('Error', 'google-document-embedder') . ": " . $status;
 	if ( $gdeoptions['error_display'] == "no" ) {
 		$code = "\n<!-- $error -->\n";
 	} else {

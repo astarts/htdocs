@@ -2,8 +2,8 @@
 Contributors: danlester
 Tags: doc, docx, pdf, office, powerpoint, google, document, embed, intranet
 Requires at least: 3.3
-Tested up to: 4.2
-Stable tag: 2.2
+Tested up to: 4.4
+Stable tag: 2.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,9 +15,16 @@ Upload PDFs and embed them straight into your site - just like adding images! PD
 
 The plugin has a unique method for embedding PDFs, using Javascript only, and _not_ using iframes or third-party services. This gives a lot of flexibility over the appearance of your document.
 
-The viewer currently has Next/Prev buttons to page through the document, and zoom buttons. There is no button to download the entire PDF (but of course a savvy user will be able to obtain the content since it is displayed to them).
+The free viewer currently has Next/Prev buttons to page through the document, and zoom buttons.
 
-It uses a customized version of Mozilla's PDF.js project, but embeds it within your existing WordPress pages so we have full control over appearance. Other plugins may use similar technology, but they will insert the PDF itself into an 'iframe' which means they do not get the flexibility over sizing.
+PDFs are embedded within your existing WordPress pages so we have full control over appearance, and all Javascript and other files are served by your own server
+(not by Google or any other third-party who may not be able to guarantee their own reliability).
+Even if other plugins use similar technology, they will insert the PDF itself into an 'iframe' which means they do not get the flexibility over sizing.
+
+There is no button for users to download the PDF in the free version of the plugin, but this is available in the Premium versions along with other extra features.
+Hyperlinks in your PDF will only be clickable in the Premium versions.
+
+**Now translation-ready!** Please contribute your translations.
 
 = Usage =
 
@@ -30,6 +37,18 @@ When you insert into your post, it will appear in the editor as a 'shortcode' as
 You can change the default appearance - e.g. width, and toolbar position/appearance through **Settings -> PDF Embedder**.
 
 To override your site-wide defaults on an individual embed, see the [Plugin Instructions](http://wp-pdf.com/free-instructions/?utm_source=PDF%20Readme%20Instructions&utm_medium=freemium&utm_campaign=Freemium) for information about sizing options plus other ways to customize the shortcodes.
+
+> **Extra Premium Features**
+>
+> * Download button in the toolbar.
+> * Hyperlinks are fully functional.
+> * Edit page number to jump straight to page.
+> * Track number of downloads and views.
+> * Removes wp-pdf.com attribution from the toolbar.
+> * Mobile-friendly.
+> * Secure option - difficult to download original PDF.
+>
+> See [wp-pdf.com](http://wp-pdf.com/?utm_source=PDF%20Readme%20Box&utm_medium=freemium&utm_campaign=Freemium) for details!
 
 = Mobile-friendly embedding using PDF Embedder Premium =
 
@@ -50,7 +69,6 @@ This means that your PDF is unlikely to be shared outside your site where you ha
 
 See our website [wp-pdf.com](http://wp-pdf.com/secure/?utm_source=PDF%20Readme%20Secure&utm_medium=freemium&utm_campaign=Freemium) for more details and purchase options.
 
-
 == Screenshots ==
 
 1. Uploaded PDF is displayed within your page/post at the correct size to fit. 
@@ -59,6 +77,8 @@ See our website [wp-pdf.com](http://wp-pdf.com/secure/?utm_source=PDF%20Readme%2
 == Frequently Asked Questions ==
 
 = How can I obtain support for this product? =
+
+We have [instructions](https://wp-pdf.com/free-instructions/) and [troubleshooting](https://wp-pdf.com/troubleshooting/) pages explaining common setup queries and issues.
 
 Please feel free to email [contact@wp-pdf.com](mailto:contact@wp-pdf.com) with any questions.
 
@@ -101,6 +121,20 @@ A **secure premium** version is available that encrypts the PDF during transmiss
 
 See our website [wp-pdf.com](http://wp-pdf.com/secure/?utm_source=PDF%20Readme%20FAQ%20Secure&utm_medium=freemium&utm_campaign=Freemium) for more details and purchase options.
 
+= Can I add a Download button to the toolbar? =
+
+This is possible only in the Premium version.
+
+= Are Hyperlinks supported? =
+
+The Premium versions allow functioning hyperlinks - both internal links within the document, and links to external websites.
+
+= Can I remove the wp-pdf.com link from the viewer toolbar? =
+
+The easiest way is to upgrade to our Premium version, but if you know how to add entries to your database then you can add a line to the wp_options table
+with option_name 'pdfemb_poweredby' and option_value '1'.
+
+For more information on Premium versions visit [wp-pdf.com](http://wp-pdf.com/?utm_source=PDF%20Readme%20FAQ%20Bottom&utm_medium=freemium&utm_campaign=Freemium).
 
 == Installation ==
 
@@ -118,6 +152,33 @@ the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
 == Changelog ==
+
+= 2.4.1 =
+
+Code placeholders for tracking views/downloaders - available only in premium versions.
+Updated languages.
+
+= 2.4 =
+
+Now translation-ready! Your language contributions are welcome.
+Compatibility with WordPress 4.4
+
+Contains information about new features in Premium version:
+Functioning hyperlinks
+Jump to page number
+
+= 2.2.5 =
+
+Better explanation of some error messages (e.g. attempt to access PDF on a different domain).
+Forced white background by default - some Theme's CSS would override.
+
+= 2.2.4 =
+
+'Download PDF' button added to options, but function is only available in Premium versions.
+
+= 2.2.2 =
+
+Redesigned toolbar buttons
 
 = 2.2 =
 
