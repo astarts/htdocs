@@ -4,7 +4,7 @@ SET @domain_name = '2016.alessandro-chianese.com';
 
 UPDATE wp_options SET option_value = REPLACE(option_value, @source_domain, @domain_name);
 UPDATE wp_posts SET post_content = REPLACE(post_content, @source_domain, @domain_name);
-
+UPDATE wp_posts SET guid = REPLACE(guid, @source_domain, @domain_name);
 
 
 -- Migrate pre-production to local
@@ -13,6 +13,7 @@ SET @domain_name = 'galerie2016.local';
 
 UPDATE wp_options SET option_value = REPLACE(option_value, @source_domain, @domain_name);
 UPDATE wp_posts SET post_content = REPLACE(post_content, @source_domain, @domain_name);
+UPDATE wp_posts SET guid = REPLACE(guid, @source_domain, @domain_name);
 
 
 
@@ -22,6 +23,7 @@ SET @domain_name = 'galerie2016.local';
 
 UPDATE wp_options SET option_value = REPLACE(option_value, @source_domain, @domain_name);
 UPDATE wp_posts SET post_content = REPLACE(post_content, @source_domain, @domain_name);
+UPDATE wp_posts SET guid = REPLACE(guid, @source_domain, @domain_name);
 
 
 
@@ -31,6 +33,7 @@ SET @domain_name = 'www.galerie2016.ch';
 
 UPDATE wp_options SET option_value = REPLACE(option_value, @source_domain, @domain_name);
 UPDATE wp_posts SET post_content = REPLACE(post_content, @source_domain, @domain_name);
+UPDATE wp_posts SET guid = REPLACE(guid, @source_domain, @domain_name);
 
 
 
@@ -40,6 +43,7 @@ SET @domain_name = 'www.galerie2016.ch';
 
 UPDATE wp_options SET option_value = REPLACE(option_value, @source_domain, @domain_name);
 UPDATE wp_posts SET post_content = REPLACE(post_content, @source_domain, @domain_name);
+UPDATE wp_posts SET guid = REPLACE(guid, @source_domain, @domain_name);
 
 
 
@@ -49,3 +53,4 @@ SET @domain_name = '2016.alessandro-chianese.com';
 
 UPDATE wp_options SET option_value = REPLACE(option_value, @source_domain, @domain_name);
 UPDATE wp_posts SET post_content = REPLACE(post_content, @source_domain, @domain_name);
+UPDATE wp_posts SET guid = REPLACE(guid, @source_domain, @domain_name);
