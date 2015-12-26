@@ -131,7 +131,7 @@ function front_end_video_player($videos, $paramssld, $video_player){
 										$autoplay="false";
 									}
 								?>
-								autoplay=<?=$autoplay; ?>;
+								autoplay='<?=$autoplay; ?>';
 								video_width=<?=$video_player[0]->width; ?>;;
 								video_param_width=<?=$video_player[0]->width; ?>;
 								
@@ -188,7 +188,18 @@ function front_end_video_player($videos, $paramssld, $video_player){
 										var current_time_percent = current_time*(100/duration_time);
 										var progress_bar_pixels=(current_time_percent*video_width)/100;
 										progress_played_bar.style.width=progress_bar_pixels+"px";
-										progress_thumb.style.left=progress_bar_pixels+"px";
+										console.log(progress_thumb.offsetWidth);
+										if(progress_bar_pixels+progress_thumb.offsetWidth/2 > video_width){
+											var last_px = video_width-progress_thumb.offsetWidth/2;
+											progress_thumb.style.left=last_px+"px";
+											
+										}else if(progress_bar_pixels < progress_thumb.offsetWidth/2){
+											var first_px = progress_thumb.offsetWidth/2;
+											progress_thumb.style.left=first_px+"px";
+										}else{
+											progress_thumb.style.left=progress_bar_pixels+"px";
+										}
+										
 									}
 									
 									function progressHandler(){
@@ -1627,7 +1638,7 @@ function front_end_video_player($videos, $paramssld, $video_player){
 								jQuery(document).ready(function(){
 									function vimhw<?php echo $i; ?>(){
 										var w=<?php echo $video_player[0]->width; ?>;
-										if(jQuery("#vimeo_single_player_<?php echo $video->id; ?>").parent().width()<w){
+										if(jQuery("#vimeo_single_player_<?php echo $video->id; ?>").parent().width()<=w){
 											document.getElementById("vimeo_single_player_<?php echo $video->id; ?>").style.width="100%";
 											var w=document.getElementById("vimeo_single_player_<?php echo $video->id; ?>").offsetWidth;
 											document.getElementById("vimeo_single_player_<?php echo $video->id; ?>").style.height=w*0.56+"px";
@@ -1848,7 +1859,6 @@ jQuery(document).ready(function(){
 							'onReady'    : onReady,
 						}
 					});
-				
 					function onReady() {
 						youtube_player.pauseVideo();
 						youtube_player.addEventListener('onStateChange', function(e) {
@@ -1963,7 +1973,17 @@ jQuery(document).ready(function(){
 								var current_time_percent = current_time*(100/duration_time);
 								var progress_bar_pixels=(current_time_percent*video_width)/100;
 								progress_played_bar.style.width=progress_bar_pixels+"px";
-								progress_thumb.style.left=progress_bar_pixels+"px";
+								if(progress_bar_pixels+progress_thumb.offsetWidth/2 > video_width){
+									var last_px = video_width-progress_thumb.offsetWidth/2;
+									progress_thumb.style.left=last_px+"px";
+									
+								}else if(progress_bar_pixels < progress_thumb.offsetWidth/2){
+									var first_px = progress_thumb.offsetWidth/2;
+									progress_thumb.style.left=first_px+"px";
+								}else{
+									progress_thumb.style.left=progress_bar_pixels+"px";
+								}
+								
 							}
 							
 							function progressHandler(){
@@ -2481,7 +2501,10 @@ jQuery(document).ready(function(){
 							case "custom":
 								/* HIDE YOUTUBE PLAYER */
 								youtube.style.display="none";
-								youtube_player.loadVideoById("");
+								if(typeof youtube_player.loadVideoById === 'function'){
+									youtube_player.loadVideoById("");
+								}
+								
 								global_container.querySelector(".players_wrapper #youtube_<?=$i; ?>_thumb").style.display="none";
 								/* HIDE VIMEO PLAYER */ 
 								vimeo_player.setAttribute("src","");
@@ -2701,7 +2724,6 @@ jQuery(document).ready(function(){
 						break;
 					case "center":
 						?>
-						width:<?php echo $video_player[0]->width+400; ?>px;
 						margin:0px auto;
 						<?php
 						break;
@@ -2762,51 +2784,51 @@ jQuery(document).ready(function(){
 				width:<?=$video_player[0]->width; ?>px;
 			}
 
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .thumbnail_block {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .thumbnail_block {
 				background:#<?php echo $paramssld['video_pl_background_color']; ?>;
 			}
 
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom {
 				background:rgba(<?=hex2RGB($paramssld['video_pl_controls_panel_color']); ?>,<?=$paramssld['video_pl_controls_panel_opacity']/100; ?>);
 			}
 
-			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_player .thumbnail_block .thumbnail_play,
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_center,
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .control {
+			#huge_it_album_video_player_<?=$i; ?> .huge_it_player .thumbnail_block .thumbnail_play,
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_center,
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .control {
 				color:#<?php echo $paramssld['video_pl_buttons_color']; ?> !important;
 			}
 			
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .control:hover {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .control:hover {
 				color:#<?php echo $paramssld['video_pl_buttons_hover_color']; ?> !important;
 			}
 
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide {
 				background:transparent;
 			}
 
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .duration {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .duration {
 				background:rgba(<?=hex2RGB($paramssld['video_pl_timeline_background']); ?>,<?=$paramssld['video_pl_timeline_background_opacity']/100; ?>);
 			}
 			
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .buffered {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .buffered {
 				background:rgba(<?=hex2RGB($paramssld['video_pl_timeline_buffering_color']); ?>,<?=$paramssld['video_pl_timeline_buffering_opacity']/100; ?>);
 			}
 			
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .volume_handle .volume_before,
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .played{
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .volume_handle .volume_before,
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .played{
 				background:#<?=$paramssld['video_pl_timeline_color']; ?>;
 			}
 			
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .thumb {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_duration_slide .thumb {
 				background:#<?=$paramssld['video_pl_timeline_slider_color']; ?>;
 			}
 
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .timer .current_time {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .timer .current_time {
 				color:#<?=$paramssld['video_pl_curtime_color']; ?>;
 			}
 
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .timer .separator,
-			#huge_it_album_video_player_<?=$i; ?>.align_bottom .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .timer .duration_time {
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .timer .separator,
+			#huge_it_album_video_player_<?=$i; ?> .players_wrapper .huge_it_video_player_bottom .huge_it_video_player_controls .timer .duration_time {
 				color:#<?=$paramssld['video_pl_durtime_color']; ?>;
 			}
 			

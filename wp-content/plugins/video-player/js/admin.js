@@ -10,7 +10,6 @@ jQuery(document).ready(function () {
 		} else if (RegExp.$3.indexOf('vimeo') > -1) {
 			var type='vimeo';
 		}
-		alert(data_type+","+type);
 		var data={
 			action:"video_player_ajax",
 			task:"change_video_link",

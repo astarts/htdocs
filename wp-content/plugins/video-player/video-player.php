@@ -4,7 +4,7 @@
 Plugin Name: Huge IT Video Player
 Plugin URI: http://huge-it.com/video-player/
 Description: Huge-IT Video player is perfect for using for creating various portfolios within various views. 
-Version: 1.1.0
+Version: 1.1.1
 Author: Huge-IT
 Author: http://huge-it.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -166,30 +166,13 @@ function huge_it_video_player_options_panel()
     $page_cat = add_menu_page('Theme page title', 'Video Player', 'manage_options', 'video_players_huge_it_video_player', 'video_players_huge_it_video_player', plugins_url('images/huge_it_video_player_logo_for_menu.png', __FILE__));
     $page_option = add_submenu_page('video_players_huge_it_video_player', 'General Options', 'General Options', 'manage_options', 'Options_video_player_styles', 'Options_video_player_styles');
 	add_submenu_page('video_players_huge_it_video_player', 'Featured Plugins', 'Featured Plugins', 'manage_options', 'huge_it__video_player_featured_plugins', 'huge_it__video_player_featured_plugins');
-	add_submenu_page( 'video_players_huge_it_video_player', 'Licensing', 'Licensing', 'manage_options', 'huge_it_video_player_Licensing', 'huge_it_video_player_Licensing');	
+		
 	add_action('admin_print_styles-' . $page_cat, 'huge_it_video_player_admin_script');
     add_action('admin_print_styles-' . $page_option, 'huge_it_video_player_option_admin_script');
 }
 function huge_it__video_player_featured_plugins()
 {
 	include_once("admin/huge_it_featured_plugins.php");
-}
-
-function huge_it_video_player_Licensing(){
-	?>
-    <div style="width:95%">
-    <p>This plugin is the non-commercial version of the Huge IT Video Player. If you want to customize to the styles and colors of your website,than you need to buy a license.Purchasing a license will add possibility to customize the general options  of the Huge IT Video Player.</p>
-	<br /><br />
-	<a href="http://huge-it.com/video-player" class="button-primary" target="_blank">Purchase a License</a>
-	<br /><br /><br />
-	<p>After the purchasing the commercial version follow this steps:</p>
-	<ol>
-		<li>Deactivate Huge IT Video Player</li>
-		<li>Delete Huge IT Video Player</li>
-		<li>Install the downloaded commercial version of the plugin</li>
-	</ol>
-	</div>
-<?php
 }
 
 
@@ -287,7 +270,8 @@ function video_player_Options_slider_styles()
 
 //////////////////////////Huge it Slider ///////////////////////////////////////////
 
-function huge_it_video_player_admin_script(){
+function huge_it_video_player_admin_script()
+{
 	wp_enqueue_media();
 	wp_enqueue_style("jquery_ui", "http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css", FALSE);
 	wp_enqueue_style("jquery_ui", plugins_url("style/jquery-ui.css", __FILE__), FALSE);
@@ -664,7 +648,7 @@ INSERT INTO `$table_name` (`name`, `title`,`description`, `value`) VALUES
 ('video_pl_playlist_scroll_thumb', 'Playlist Scrollbar Thumb Color', 'Playlist Scrollbar Thumb Color', 'CCCCCC'),
 ('video_pl_playlist_scroll_thumb_hover', 'Playlist Scrollbar Thumb Hover Color', 'Playlist Scrollbar Thumb Hover Color', 'AAAAAA'),
 ('video_pl_playlist_head_color', 'Playlist Heading Color', 'Playlist Heading Color', 'FFFFFF'),
-('video_pl_playlist_active_color', 'Playlist Active Color', 'Playlist Active Color', 'FFFFFF'),
+('video_pl_playlist_active_color', 'Playlist Active Color', 'Playlist Active Color', '525252'),
 ('video_pl_playlist_hover_color', 'Playlist Hover Color', 'Playlist Hover Color', '525252'),
 ('video_pl_playlist_hover_text_color', 'Playlist Hover Text Color', 'Playlist Hover Text Color', 'FFFFFF'),
 ('video_pl_playlist_active_text_color', 'Playlist Active Text Color', 'Playlist Active Text Color', 'FFFFFF'),
